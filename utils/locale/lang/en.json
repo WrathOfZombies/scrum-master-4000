@@ -1,0 +1,27 @@
+{
+  "app": {
+    "title": "Welcome human!",
+    "hero": "Scrum Master 4000",
+    "company": "OtterCorp",
+    "subtitle": "Use this handy tool to compute your sprint metrics."
+  },
+  "wizard": {
+    "step": "Step {step}:",
+    "instruction1": "To begin, get your sprint information from here:",
+    "next": "Next step"
+  },
+  "form": {
+    "start": "Start",
+    "startLabel": "Points you started the sprint with",
+    "added": "Added",
+    "addedLabel": "Points you added to the sprint",
+    "removed": "Removed",
+    "removedLabel": "Points you removed from the sprint",
+    "done": "Done",
+    "doneLabel": "Points you completed in the sprint",
+    "qa": "QA remaining",
+    "qaLabel": "Points still in QA",
+    "rest": "Rest remaining",
+    "restLabel": "Points still in QA"
+  }
+}
