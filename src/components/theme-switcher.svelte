@@ -1,8 +1,8 @@
 <script>
-  import { HeaderGlobalAction } from "carbon-components-svelte";
-  import { Light, LightFilled } from "carbon-icons-svelte/lib";
+  import { HeaderGlobalAction } from 'carbon-components-svelte'
+  import { Light, LightFilled } from 'carbon-icons-svelte/lib'
 
-  let isLightTheme = false;
+  let isLightTheme = false
 </script>
 
 <HeaderGlobalAction
@@ -10,4 +10,3 @@
   icon={isLightTheme ? Light : LightFilled}
   on:click={() => (isLightTheme = !isLightTheme)}
 />
-
