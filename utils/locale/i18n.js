@@ -3,7 +3,6 @@ import { register, _, locale, init, getLocaleFromNavigator } from "svelte-i18n";
 
 async function setupI18n() {
   register("en", () => import("./lang/en.json"));
-  register("pt", () => import("./lang/pt.json"));
 
   init({
     fallbackLocale: "en",
