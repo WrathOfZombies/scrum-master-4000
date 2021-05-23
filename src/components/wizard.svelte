@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { t } from 'svelte-i18n'
   import { Grid, Row, Column, ProgressIndicator, ProgressStep } from 'carbon-components-svelte'
 
@@ -14,7 +14,7 @@
 </script>
 
 {#if steps.length}
-  <Grid padding fullwidth>
+  <Grid padding fullWidth>
     <Row>
       <Column>
         <ProgressIndicator preventChangeOnClick currentIndex={currentStep}>

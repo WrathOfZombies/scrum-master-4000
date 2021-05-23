@@ -4,6 +4,7 @@
   "private": true,
   "devDependencies": {
     "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "@rollup/plugin-typescript": "^8.2.1",
     "@tsconfig/svelte": "^1.0.10",
@@ -27,7 +28,7 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w",
+    "dev": "rollup -c -w & yarn start",
     "start": "sirv public --no-clear",
     "validate": "svelte-check"
   },

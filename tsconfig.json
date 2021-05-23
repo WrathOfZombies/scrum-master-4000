@@ -9,6 +9,8 @@
     "resolveJsonModule": true,
     "declaration": true,
     "sourceMap": true,
-    "declarationMap": true
+    "declarationMap": true,
+    "rootDir": "./src",
+    "outDir": "./public/build"
   }
 }
