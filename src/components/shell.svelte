@@ -17,6 +17,5 @@
 </Header>
 
 <Content>
-  <p>Hello World!</p>
   <Wizard {steps} />
 </Content>
