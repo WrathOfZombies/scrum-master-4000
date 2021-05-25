@@ -1,23 +1,19 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import type { Recipie } from '../interface'
 
-const extractCSS: Recipie = ({ options = {}, loaders = [] } = {}) => {
+const css: Recipie = () => {
   return {
     module: {
       rules: [
         {
-          test: /\.(p?css)$/,
-          use: [{ loader: MiniCssExtractPlugin.loader, options }, 'css-loader'].concat(loaders),
+          test: /\.([s|p]?css)$/,
+          use: [{ loader: MiniCssExtractPlugin.loader }, 'css-loader', 'postcss-loader'],
           sideEffects: true,
         },
       ],
     },
-    plugins: [
-      new MiniCssExtractPlugin({
-        filename: '[name].css',
-      }),
-    ],
+    plugins: [new MiniCssExtractPlugin({ filename: '[name].css' })],
   }
 }
 
-export { extractCSS }
+export { css }

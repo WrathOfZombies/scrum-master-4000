@@ -3,19 +3,18 @@ import { merge } from 'webpack-merge'
 import argv from 'webpack-nano/argv'
 import type { Recipie } from './interface'
 
-import { devServer, esbuild, dist, extractCSS, fastSourceMaps, page, svelte, useDotenv } from './recipies'
+import { devServer, esbuild, dist, css, fastSourceMaps, page, svelte, progress } from './recipies'
 
 const cookbook =
   (...recipies: Recipie[]): Recipie =>
-  (argv) =>
-    merge.apply(merge, [...recipies.map((recipe) => recipe(argv))])
+  (params) =>
+    merge.apply(merge, [...recipies.map((recipe) => recipe(params))])
 
-const common = cookbook(({ mode }) => ({ mode }), dist, page, svelte, extractCSS, useDotenv)
+const common = cookbook(({ mode }) => ({ mode, target: 'web' }), dist, page, svelte, css, progress)
 
 const development = cookbook(
   common,
-  () => ({ entry: ['./src/index.ts', 'webpack-plugin-serve/client'] }),
-  () => ({ target: 'web' }),
+  () => ({ entry: ['webpack-plugin-serve/client', './src/main.ts'] }),
   fastSourceMaps,
   esbuild,
   devServer
@@ -24,20 +23,20 @@ const development = cookbook(
 const production = cookbook(common)
 
 const getConfig = (args) => {
-  const argv = {
-    ...args,
+  const params = {
+    mode: args.mode,
     title: 'Scrum Master 4000',
   }
 
-  switch (argv.mode) {
+  switch (params.mode) {
     case 'production':
-      return production(argv)
+      return production(params)
 
     case 'development':
-      return development(argv)
+      return development(params)
 
     default:
-      throw new Error(`Unknown mode, ${argv.mode}`)
+      throw new Error(`Unknown mode, ${params.mode}`)
   }
 }
 

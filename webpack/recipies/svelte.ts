@@ -10,7 +10,7 @@ export const svelte: Recipie = (mode) => {
       alias: {
         svelte: path.dirname(require.resolve('svelte/package.json')),
       },
-      extensions: ['.mjs', '.js', '.svelte', '.ts'],
+      extensions: ['.svelte'],
       mainFields: ['svelte', 'browser', 'module', 'main'],
     },
     module: {
@@ -20,18 +20,17 @@ export const svelte: Recipie = (mode) => {
           use: {
             loader: 'svelte-loader',
             options: {
-              compilerOptions: {
-                dev: !prod,
-              },
-              emitCss: prod,
-              hotReload: !prod,
-              preprocess: preprocess({
-                postcss: true,
-              }),
+              // compilerOptions: {
+              //   dev: !prod,
+              // },
+              // preprocess: preprocess({
+              //   postcss: true,
+              // }),
             },
           },
         },
         {
+          // required to prevent errors from Svelte on Webpack 5+, omit on Webpack 4
           test: /node_modules\/svelte\/.*\.mjs$/,
           resolve: {
             fullySpecified: false,

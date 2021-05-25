@@ -3,7 +3,7 @@ import type { Recipie } from '../interface'
 
 const dist: Recipie = () => ({
   output: {
-    path: process.env.DIST_DIR || path.resolve(process.cwd(), 'dist'),
+    path: path.resolve(process.cwd(), 'public/build'),
   },
 })
 

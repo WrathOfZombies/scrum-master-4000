@@ -1,8 +1,10 @@
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
-import { ESBuildPlugin } from 'esbuild-loader'
 import type { Recipie } from '../interface'
 
 const typescript: Recipie = () => ({
+  resolve: {
+    extensions: ['.mjs', '.js', '.svelte', '.ts'],
+  },
   module: {
     rules: [
       {
@@ -45,7 +47,6 @@ const esbuild: Recipie = () => {
       ],
     },
     plugins: [
-      new ESBuildPlugin(),
       new ForkTsCheckerWebpackPlugin({
         async: true,
         typescript: {
