@@ -3,14 +3,27 @@
   "include": ["src/**/*"],
   "exclude": ["node_modules/*", "__sapper__/*", "public/*"],
   "compilerOptions": {
-    "target": "ES2017",
-    "module": "CommonJS",
+    "module": "esnext",
+    "target": "es2018",
+    "lib": ["es2018", "es2019.array", "dom"],
     "moduleResolution": "node",
-    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "allowJs": false,
+    "types": ["svelte"],
+    "allowUnreachableCode": false,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUncheckedIndexedAccess": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "importHelpers": true,
     "declaration": true,
-    "sourceMap": true,
     "declarationMap": true,
-    "rootDir": "./src",
-    "outDir": "./public/build"
+    "sourceMap": true,
+    "useDefineForClassFields": true,
+    "resolveJsonModule": true,
+    "typeRoots": ["./node_modules/@types"]
   }
 }
