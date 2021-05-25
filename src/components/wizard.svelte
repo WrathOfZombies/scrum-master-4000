@@ -1,10 +1,11 @@
 <script lang="ts">
   import { t } from 'svelte-i18n'
   import { Grid, Row, Column, ProgressIndicator, ProgressStep } from 'carbon-components-svelte'
+  import type { SvelteComponent } from 'svelte'
 
-  export let steps = []
+  export let steps: SvelteComponent[] = []
   export let currentStep = 0
-  let step
+  let step: SvelteComponent
 
   const goToNext = () => (currentStep += 1)
 

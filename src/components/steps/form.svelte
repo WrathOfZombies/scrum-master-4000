@@ -1,11 +1,13 @@
-<script lang="ts">
+<script lang="typescript">
   import { t } from 'svelte-i18n'
-  import { Form, Grid, Row, NumberInput } from 'carbon-components-svelte'
-  import { createEventDispatcher } from 'svelte'
+  import { Form, Grid, Row, NumberInput, Column } from 'carbon-components-svelte'
+  // import { createEventDispatcher } from 'svelte'
 
-  const dispatch = createEventDispatcher()
+  // const dispatch = createEventDispatcher()
 
-  const sprint = {
+  type SprintMetric = 'start' | 'added' | 'removed' | 'done' | 'qa' | 'rest'
+
+  const sprint: Record<SprintMetric, number> = {
     start: 0,
     added: 0,
     removed: 0,
@@ -14,22 +16,26 @@
     rest: 0,
   }
 
-  function submitForm() {
-    dispatch('result', sprint)
-  }
+  // function submitForm() {
+  //   dispatch('result', sprint)
+  // }
+
+  const metrics = Object.keys(sprint) as SprintMetric[]
 </script>
 
 <Form>
   <Grid padding fullWidth>
-    {#each Object.keys(sprint) as metric (metric)}
+    {#each metrics as metric (metric)}
       <Row>
-        <NumberInput
-          label={$t(`form.${metric}`)}
-          helperText={$t(`form.${metric}Label`)}
-          size="xl"
-          required
-          bind:value={sprint[metric]}
-        />
+        <Column>
+          <NumberInput
+            label={$t(`form.${metric}`)}
+            helperText={$t(`form.${metric}Label`)}
+            size="xl"
+            required
+            bind:value={sprint[metric]}
+          />
+        </Column>
       </Row>
     {/each}
   </Grid>
