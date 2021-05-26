@@ -3,9 +3,9 @@
   import { Grid, Row, Column, ProgressIndicator, ProgressStep } from 'carbon-components-svelte'
   import type { SvelteComponent } from 'svelte'
 
-  export let steps: SvelteComponent[] = []
+  export let steps: typeof SvelteComponent[] = []
   export let currentStep = 0
-  let step: SvelteComponent
+  let step: typeof SvelteComponent
 
   const goToNext = () => (currentStep += 1)
 

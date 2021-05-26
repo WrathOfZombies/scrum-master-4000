@@ -1,7 +1,7 @@
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
-import type { Recipie } from '../interface'
+import type { Recipe } from '../interface'
 
-const typescript: Recipie = () => ({
+const typescript: Recipe = () => ({
   resolve: {
     extensions: ['.mjs', '.js', '.svelte', '.ts'],
   },
@@ -9,7 +9,7 @@ const typescript: Recipie = () => ({
     rules: [
       {
         test: /\.ts$/,
-        use: 'ts-loader',
+        loader: 'ts-loader',
         exclude: /node_modules/,
         options: {
           transpileOnly: true,
@@ -33,12 +33,12 @@ const typescript: Recipie = () => ({
   ],
 })
 
-const esbuild: Recipie = () => {
+const esbuild: Recipe = () => {
   return {
     module: {
       rules: [
         {
-          test: /\.[j|t]sx?$/,
+          test: /\.tsx?$/,
           loader: 'esbuild-loader',
           options: {
             target: 'es2018',

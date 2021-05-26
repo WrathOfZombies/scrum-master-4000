@@ -1,14 +1,37 @@
-import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import type { Recipie } from '../interface'
+import type { Recipe } from '../interface'
 
-const css: Recipie = () => {
+import Autoprefixer from 'autoprefixer'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+
+const css: Recipe = () => {
   return {
     module: {
       rules: [
         {
-          test: /\.([s|p]?css)$/,
-          use: [{ loader: MiniCssExtractPlugin.loader }, 'css-loader', 'postcss-loader'],
-          sideEffects: true,
+          test: /\.(scss|sass)$/,
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader,
+            },
+            'css-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                postcssOptions: {
+                  plugins: [Autoprefixer],
+                },
+              },
+            },
+          ],
+        },
+        {
+          test: /\.css$/,
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader,
+            },
+            'css-loader',
+          ],
         },
       ],
     },

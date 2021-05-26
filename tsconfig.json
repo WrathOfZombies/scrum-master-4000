@@ -1,5 +1,4 @@
 {
-  "extends": "@tsconfig/svelte/tsconfig.json",
   "include": ["src/**/*"],
   "exclude": ["node_modules/*", "__sapper__/*", "public/*"],
   "compilerOptions": {
@@ -10,7 +9,8 @@
     "esModuleInterop": true,
     "strict": true,
     "allowJs": false,
-    "types": ["svelte"],
+    "baseUrl": ".",
+    "types": ["svelte", "svelte/store", "svelte/motion", "svelte/transition", "svelte/animate", "svelte/easing"],
     "allowUnreachableCode": false,
     "noImplicitAny": true,
     "noImplicitReturns": true,
@@ -24,6 +24,9 @@
     "sourceMap": true,
     "useDefineForClassFields": true,
     "resolveJsonModule": true,
-    "typeRoots": ["./node_modules/@types"]
+    "typeRoots": ["./node_modules/@types"],
+    "paths": {
+      "*": ["src/*"]
+    }
   }
 }

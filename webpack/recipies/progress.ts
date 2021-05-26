@@ -1,8 +1,8 @@
 import WebpackBar from 'webpackbar'
-import type { Recipie } from '../interface'
+import type { Recipe } from '../interface'
 
-const progress: Recipie = () => ({
-  plugins: [new WebpackBar({ color: '#FF4444', profile: true })],
+const progress: Recipe = () => ({
+  plugins: [new WebpackBar({ color: '#50A2FF', profile: true })],
 })
 
 export { progress }

@@ -6,7 +6,6 @@
   let isLightTheme = false
 </script>
 
-{@debug isLightTheme}
 <HeaderGlobalAction
   aria-label="Toggle theme"
   icon={isLightTheme ? LightIcon : DarkIcon}

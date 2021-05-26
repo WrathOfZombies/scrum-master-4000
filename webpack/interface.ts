@@ -2,8 +2,8 @@ import type { Configuration } from 'webpack'
 
 type Strategy = 'Common' | 'Production' | 'Development' | 'Testing'
 
-type Strategies = Record<Strategy, Recipie>
+type Strategies = Record<Strategy, Recipe>
 
-type Recipie = (...args: any) => Partial<Configuration>
+type Recipe = (...args: any) => Partial<Configuration>
 
-export { Configuration, Strategy, Strategies, Recipie }
+export type { Configuration, Strategy, Strategies, Recipe }
