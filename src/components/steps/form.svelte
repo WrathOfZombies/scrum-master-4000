@@ -1,26 +1,20 @@
 <script lang="typescript">
   import { t } from 'svelte-i18n'
-  import { Form, Grid, Row, NumberInput, Column } from 'carbon-components-svelte'
-  // import { createEventDispatcher } from 'svelte'
+  import { Form, Grid, Row, Button, NumberInput, Column } from 'carbon-components-svelte'
+  import { currentSprint, SprintMetric } from '../../utils/store/sprint'
+  import Calculation from 'carbon-icons-svelte/lib/Calculation16'
+  import { createEventDispatcher } from 'svelte'
 
-  // const dispatch = createEventDispatcher()
+  export let goToNext: () => void
 
-  type SprintMetric = 'start' | 'added' | 'removed' | 'done' | 'qa' | 'rest'
+  const dispatch = createEventDispatcher()
 
-  const sprint: Record<SprintMetric, number> = {
-    start: 0,
-    added: 0,
-    removed: 0,
-    done: 0,
-    qa: 0,
-    rest: 0,
+  function submitForm() {
+    dispatch('onCalculate', $currentSprint)
+    goToNext()
   }
 
-  // function submitForm() {
-  //   dispatch('result', sprint)
-  // }
-
-  const metrics = Object.keys(sprint) as SprintMetric[]
+  const metrics = Object.keys($currentSprint) as SprintMetric[]
 </script>
 
 <Form>
@@ -33,10 +27,15 @@
             helperText={$t(`form.${metric}Label`)}
             size="xl"
             required
-            bind:value={sprint[metric]}
+            bind:value={$currentSprint[metric]}
           />
         </Column>
       </Row>
     {/each}
+    <Row>
+      <Column>
+        <Button icon={Calculation} kind="tertiary" target="_blank" on:click={submitForm}>{$t('form.button')}</Button>
+      </Column>
+    </Row>
   </Grid>
 </Form>

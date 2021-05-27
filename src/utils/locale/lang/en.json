@@ -4,14 +4,19 @@
     "company": "OtterCorp"
   },
   "welcome": {
-    "title": "Hello OTR",
-    "subtitle": "First, let's get your sprint information",
+    "title": "JIRA",
+    "subtitle": "Let's get your sprint information",
     "button": "Load metrics in Jira"
   },
   "wizard": {
     "step": "Step {step}:",
     "next": "Next",
     "complete": "Complete"
+  },
+  "thankyou": {
+    "title": "Fin.",
+    "subtitle": "Thank you for playing scrum master with us.",
+    "button": "Close"
   },
   "form": {
     "subtitle": "Let's get the story points",
@@ -26,6 +31,7 @@
     "qa": "QA remaining",
     "qaLabel": "Points still in QA",
     "rest": "Rest remaining",
-    "restLabel": "Remaining points"
+    "restLabel": "Remaining points in the scrum",
+    "button": "Calculate metrics"
   }
 }

@@ -4,10 +4,14 @@
   import type { SvelteComponent } from 'svelte'
 
   export let steps: typeof SvelteComponent[] = []
-  export let currentStep = 0
+  export let currentStep = 2
   let step: typeof SvelteComponent
 
-  const goToNext = () => (currentStep += 1)
+  const goToNext = () => {
+    if (currentStep < steps.length) {
+      currentStep += 1
+    }
+  }
 
   $: {
     step = steps[currentStep]
@@ -18,7 +22,7 @@
   <Grid padding fullWidth>
     <Row>
       <Column>
-        <ProgressIndicator preventChangeOnClick currentIndex={currentStep}>
+        <ProgressIndicator spaceEqually bind:currentIndex={currentStep}>
           {#each steps as _, position}
             <ProgressStep
               complete={currentStep >= position}
